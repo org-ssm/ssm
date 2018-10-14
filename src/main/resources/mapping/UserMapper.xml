@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pengtu.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.pengtu.model.User" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="ORGNAME" property="orgname" jdbcType="VARCHAR" />
+    <result column="ORGID" property="orgid" jdbcType="VARCHAR" />
+    <result column="PHOTO" property="photo" jdbcType="VARCHAR" />
+    <result column="AGE" property="age" jdbcType="INTEGER" />
+    <result column="SEX" property="sex" jdbcType="VARCHAR" />
+    <result column="DUTYNAME" property="dutyname" jdbcType="VARCHAR" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="MOBILEPHONE" property="mobilephone" jdbcType="VARCHAR" />
+    <result column="LATESTLOGINTIME" property="latestlogintime" jdbcType="DATE" />
+    <result column="ONLINETYPE" property="onlinetype" jdbcType="VARCHAR" />
+    <result column="EXPIRED" property="expired" jdbcType="VARCHAR" />
+    <result column="LOCKED" property="locked" jdbcType="VARCHAR" />
+    <result column="CREDEXPIRED" property="credexpired" jdbcType="VARCHAR" />
+    <result column="ENABLE" property="enable" jdbcType="VARCHAR" />
+    <result column="LASTLOGINTIME" property="lastlogintime" jdbcType="DATE" />
+    <result column="ATTEMPTS" property="attempts" jdbcType="INTEGER" />
+    <result column="LASTCHANGEPWDTIME" property="lastchangepwdtime" jdbcType="DATE" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="DELFLAG" property="delflag" jdbcType="VARCHAR" />
+    <result column="CREATEDATE" property="createdate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, NAME, ORGNAME, ORGID, PHOTO, AGE, SEX, DUTYNAME, USERNAME, PASSWORD, EMAIL, MOBILEPHONE, 
+    LATESTLOGINTIME, ONLINETYPE, EXPIRED, LOCKED, CREDEXPIRED, ENABLE, LASTLOGINTIME, 
+    ATTEMPTS, LASTCHANGEPWDTIME, REMARK, DELFLAG, CREATEDATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_APP_USER
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_APP_USER
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pengtu.model.User" >
+    insert into T_APP_USER (ID, NAME, ORGNAME, 
+      ORGID, PHOTO, AGE, 
+      SEX, DUTYNAME, USERNAME, 
+      PASSWORD, EMAIL, MOBILEPHONE, 
+      LATESTLOGINTIME, ONLINETYPE, EXPIRED, 
+      LOCKED, CREDEXPIRED, ENABLE, 
+      LASTLOGINTIME, ATTEMPTS, LASTCHANGEPWDTIME, 
+      REMARK, DELFLAG, CREATEDATE
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{orgname,jdbcType=VARCHAR}, 
+      #{orgid,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+      #{sex,jdbcType=VARCHAR}, #{dutyname,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{mobilephone,jdbcType=VARCHAR}, 
+      #{latestlogintime,jdbcType=DATE}, #{onlinetype,jdbcType=VARCHAR}, #{expired,jdbcType=VARCHAR}, 
+      #{locked,jdbcType=VARCHAR}, #{credexpired,jdbcType=VARCHAR}, #{enable,jdbcType=VARCHAR}, 
+      #{lastlogintime,jdbcType=DATE}, #{attempts,jdbcType=INTEGER}, #{lastchangepwdtime,jdbcType=DATE}, 
+      #{remark,jdbcType=VARCHAR}, #{delflag,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pengtu.model.User" >
+    insert into T_APP_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="orgname != null" >
+        ORGNAME,
+      </if>
+      <if test="orgid != null" >
+        ORGID,
+      </if>
+      <if test="photo != null" >
+        PHOTO,
+      </if>
+      <if test="age != null" >
+        AGE,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="dutyname != null" >
+        DUTYNAME,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="mobilephone != null" >
+        MOBILEPHONE,
+      </if>
+      <if test="latestlogintime != null" >
+        LATESTLOGINTIME,
+      </if>
+      <if test="onlinetype != null" >
+        ONLINETYPE,
+      </if>
+      <if test="expired != null" >
+        EXPIRED,
+      </if>
+      <if test="locked != null" >
+        LOCKED,
+      </if>
+      <if test="credexpired != null" >
+        CREDEXPIRED,
+      </if>
+      <if test="enable != null" >
+        ENABLE,
+      </if>
+      <if test="lastlogintime != null" >
+        LASTLOGINTIME,
+      </if>
+      <if test="attempts != null" >
+        ATTEMPTS,
+      </if>
+      <if test="lastchangepwdtime != null" >
+        LASTCHANGEPWDTIME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="delflag != null" >
+        DELFLAG,
+      </if>
+      <if test="createdate != null" >
+        CREATEDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="orgname != null" >
+        #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null" >
+        #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyname != null" >
+        #{dutyname,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilephone != null" >
+        #{mobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="latestlogintime != null" >
+        #{latestlogintime,jdbcType=DATE},
+      </if>
+      <if test="onlinetype != null" >
+        #{onlinetype,jdbcType=VARCHAR},
+      </if>
+      <if test="expired != null" >
+        #{expired,jdbcType=VARCHAR},
+      </if>
+      <if test="locked != null" >
+        #{locked,jdbcType=VARCHAR},
+      </if>
+      <if test="credexpired != null" >
+        #{credexpired,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null" >
+        #{enable,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogintime != null" >
+        #{lastlogintime,jdbcType=DATE},
+      </if>
+      <if test="attempts != null" >
+        #{attempts,jdbcType=INTEGER},
+      </if>
+      <if test="lastchangepwdtime != null" >
+        #{lastchangepwdtime,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null" >
+        #{delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pengtu.model.User" >
+    update T_APP_USER
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="orgname != null" >
+        ORGNAME = #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null" >
+        ORGID = #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        PHOTO = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        AGE = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyname != null" >
+        DUTYNAME = #{dutyname,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilephone != null" >
+        MOBILEPHONE = #{mobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="latestlogintime != null" >
+        LATESTLOGINTIME = #{latestlogintime,jdbcType=DATE},
+      </if>
+      <if test="onlinetype != null" >
+        ONLINETYPE = #{onlinetype,jdbcType=VARCHAR},
+      </if>
+      <if test="expired != null" >
+        EXPIRED = #{expired,jdbcType=VARCHAR},
+      </if>
+      <if test="locked != null" >
+        LOCKED = #{locked,jdbcType=VARCHAR},
+      </if>
+      <if test="credexpired != null" >
+        CREDEXPIRED = #{credexpired,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null" >
+        ENABLE = #{enable,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogintime != null" >
+        LASTLOGINTIME = #{lastlogintime,jdbcType=DATE},
+      </if>
+      <if test="attempts != null" >
+        ATTEMPTS = #{attempts,jdbcType=INTEGER},
+      </if>
+      <if test="lastchangepwdtime != null" >
+        LASTCHANGEPWDTIME = #{lastchangepwdtime,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null" >
+        DELFLAG = #{delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        CREATEDATE = #{createdate,jdbcType=DATE},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pengtu.model.User" >
+    update T_APP_USER
+    set NAME = #{name,jdbcType=VARCHAR},
+      ORGNAME = #{orgname,jdbcType=VARCHAR},
+      ORGID = #{orgid,jdbcType=VARCHAR},
+      PHOTO = #{photo,jdbcType=VARCHAR},
+      AGE = #{age,jdbcType=INTEGER},
+      SEX = #{sex,jdbcType=VARCHAR},
+      DUTYNAME = #{dutyname,jdbcType=VARCHAR},
+      USERNAME = #{username,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      MOBILEPHONE = #{mobilephone,jdbcType=VARCHAR},
+      LATESTLOGINTIME = #{latestlogintime,jdbcType=DATE},
+      ONLINETYPE = #{onlinetype,jdbcType=VARCHAR},
+      EXPIRED = #{expired,jdbcType=VARCHAR},
+      LOCKED = #{locked,jdbcType=VARCHAR},
+      CREDEXPIRED = #{credexpired,jdbcType=VARCHAR},
+      ENABLE = #{enable,jdbcType=VARCHAR},
+      LASTLOGINTIME = #{lastlogintime,jdbcType=DATE},
+      ATTEMPTS = #{attempts,jdbcType=INTEGER},
+      LASTCHANGEPWDTIME = #{lastchangepwdtime,jdbcType=DATE},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DELFLAG = #{delflag,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=DATE}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
